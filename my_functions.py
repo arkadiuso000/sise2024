@@ -93,6 +93,13 @@ def generate_neighbours(board, row, column, directions):
 
     return neighbours
 
+def is_goal(board,rows):
+    goal4x4 = [['1','2','3','4'],['5','6','7','8'],['9','10','11','12'],['13','14','15','0']]
+    if rows == 4:
+        return board == goal4x4
+    else:
+        raise Exception("Wrong number of rows")
+
 # test
 # board, rows, cols = import_board("./plansze/4x4G7/4x4_01_00002.txt")
 # nei = generate_neighbours(board,rows,cols,"DURL")
