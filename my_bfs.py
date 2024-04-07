@@ -7,14 +7,17 @@ def bfs(start_board, directions):
     rows = columns = len(start_board)
     # history tracks the trace of the algorithm
     history = []
+    # check if start_board is our goal
     if mf.is_goal(start_board, rows):
         return True, start_board
+    # deque and set initialization
     queue = deque()
     visited_elements = set()
     # adding first element to the queue
     queue.append(start_board)
     # adding first element to the visited elements
     visited_elements.add(str(start_board))
+    # algorithm main loop
     while len(queue) != 0:
         current_element = queue.popleft()
         # adding next element to the history
