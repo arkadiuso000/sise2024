@@ -1,12 +1,10 @@
-import copy
-
 import my_functions as mf
 from collections import deque
-import ast
+# import ast
 
 
 def bfs(start_board, directions):
-    rows = column = len(start_board)
+    rows = columns = len(start_board)
     # history tracks the trace of the algorithm
     history = []
     if mf.is_goal(start_board, rows):
@@ -22,7 +20,7 @@ def bfs(start_board, directions):
         # adding next element to the history
         history.append(current_element)
         # generating neighbours
-        neighbors_current_element = mf.generate_neighbours(current_element, rows, column, directions)
+        neighbors_current_element = mf.generate_neighbours(current_element, rows, columns, directions)
         for neighbor in neighbors_current_element:
             if str(neighbor) not in visited_elements:
                 if mf.is_goal(neighbor, rows):
