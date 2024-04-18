@@ -13,7 +13,8 @@ class Board:
 
     def __hash__(self):
         # converts variable board to tuple to allow adding to the set
-        return hash(tuple(self.board))
+        return hash(tuple(tuple(row) for row in self.board))
+
 
     def __eq__(self, other):
         if isinstance(other, Board):

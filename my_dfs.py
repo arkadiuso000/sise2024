@@ -9,12 +9,12 @@ MAX_DEPTH = 20
 
 # iterative DFS algorithm implementation
 def dfs(start_board, directions):
-    rows = columns = len(start_board)
+    rows = columns = len(start_board.board)
     # history tracks the trace of the algorithm
     history = []
     # check if start_board is our goal
-    if mf.is_goal(start_board, rows):
-        return True, start_board
+    if mf.is_goal(start_board.board, rows):
+        return True, start_board.history
     # stack and set initialization
     stack = []
     visited_elements = set()
@@ -30,27 +30,24 @@ def dfs(start_board, directions):
         # adding next element to the history
         history.append(current_element)
         # adding next element to the visited elements
-        visited_elements.add(str(current_element))
+        visited_elements.add(current_element)
         # generating neighbours
-        neighbors_current_element = mf.generate_neighbours(current_element, rows, columns, directions)
+        neighbors_current_element = mf.generate_neighbours(current_element.board, rows, columns, directions,current_element.history)
         # neighbors loop
         for neighbor in reversed(neighbors_current_element):
             # check if neighbor is our goal
-            if mf.is_goal(neighbor, rows):
+            if mf.is_goal(neighbor.board, rows):
                 history.append(neighbor)
-                return True, history
-            if (str(neighbor) not in visited_elements) and (neighbor not in stack):
+                return True, neighbor.history, len(neighbor.history.split('-'))
+            if (neighbor not in visited_elements) and (neighbor not in stack):
                 # adding next element to the stack
                 stack.append((neighbor, depth + 1))
     return False, history
 
 # test
-# board, rows, cols = mf.import_board("./plansze/4x4G7/4x4_02_00001.txt")
-# result, history = dfs(board, "DLUR")
-# print("history:")
-# counter = 1
-# for el in history:
-#     print("krok {}".format(counter))
-#     mf.print_board(el)
-#     print()
-#     counter += 1
+board = mf.import_board("./plansze/4x4G7/4x4_03_00001.txt")
+result, history, ilosc_krokow = dfs(board, "LDUR")
+print("liczba krokow: {}".format(ilosc_krokow))
+print("history:")
+counter = 1
+print(history)

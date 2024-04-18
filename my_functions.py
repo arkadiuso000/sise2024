@@ -1,5 +1,6 @@
 # noinspection PyUnboundLocalVariable,PyShadowingNames
 import copy
+from board import Board
 
 
 def import_board(file_name):
@@ -12,7 +13,8 @@ def import_board(file_name):
     board = []
     for i in range(int(rows)):
         board.append(file.readline().split())
-    return board, int(rows), int(columns)
+    new_board = Board(board, int(rows), int(columns), "", None)
+    return new_board
 
 
 # noinspection PyShadowingNames
@@ -53,7 +55,7 @@ def print_board(board):
         print(i)
 
 
-def generate_neighbours(board, row, column, directions):
+def generate_neighbours(board, row, column, directions, history):
     neighbours = []
     zero_row, zero_column = find_0_position(board, row, column)
 
@@ -65,7 +67,8 @@ def generate_neighbours(board, row, column, directions):
             else:
                 neighbour_l = copy.deepcopy(board)
                 neighbour_l = swap(neighbour_l, zero_row, zero_column, i)
-                neighbours.append(neighbour_l)
+                new_neighbour_l = Board(neighbour_l, row, column, history, "lewo")
+                neighbours.append(new_neighbour_l)
 
         elif i == "R":
             if zero_column == column - 1:
@@ -73,7 +76,8 @@ def generate_neighbours(board, row, column, directions):
             else:
                 neighbour_r = copy.deepcopy(board)
                 neighbour_r = swap(neighbour_r, zero_row, zero_column, i)
-                neighbours.append(neighbour_r)
+                new_neighbour_r = Board(neighbour_r, row, column, history, "prawo")
+                neighbours.append(new_neighbour_r)
 
         elif i == "U":
             if zero_row == 0:
@@ -81,7 +85,8 @@ def generate_neighbours(board, row, column, directions):
             else:
                 neighbour_u = copy.deepcopy(board)
                 neighbour_u = swap(neighbour_u, zero_row, zero_column, i)
-                neighbours.append(neighbour_u)
+                new_neighbour_u = Board(neighbour_u, row, column, history, "góra")
+                neighbours.append(new_neighbour_u)
 
         elif i == "D":
             if zero_row == row - 1:
@@ -89,12 +94,14 @@ def generate_neighbours(board, row, column, directions):
             else:
                 neighbour_d = copy.deepcopy(board)
                 neighbour_d = swap(neighbour_d, zero_row, zero_column, i)
-                neighbours.append(neighbour_d)
+                new_neighbour_d = Board(neighbour_d, row, column, history, "dół")
+                neighbours.append(new_neighbour_d)
 
     return neighbours
 
-def is_goal(board,rows):
-    goal4x4 = [['1','2','3','4'],['5','6','7','8'],['9','10','11','12'],['13','14','15','0']]
+
+def is_goal(board, rows):
+    goal4x4 = [['1', '2', '3', '4'], ['5', '6', '7', '8'], ['9', '10', '11', '12'], ['13', '14', '15', '0']]
     if rows == 4:
         return board == goal4x4
     else:
