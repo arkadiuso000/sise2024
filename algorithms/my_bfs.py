@@ -4,36 +4,30 @@ from collections import deque
 
 def bfs(start_board, directions):
     rows = columns = len(start_board.board)
-    # history tracks the trace of the algorithm
-    history = []
     # check if start_board is our goal
-    if mf.is_goal(start_board.board, rows):
-        return True, start_board
+    if mf.is_goal(start_board.board):
+        return True, start_board.history
     # deque and set initialization
     queue = deque()
     visited_elements = set()
     # adding first element to the queue
     queue.append(start_board)
     # adding first element to the visited elements
-    visited_elements.add(str(start_board))
+    visited_elements.add(start_board)
     # algorithm main loop
     while len(queue) != 0:
         current_element = queue.popleft()
-        # adding next element to the history
-        history.append(current_element)
         # generating neighbours
         neighbors_current_element = mf.generate_neighbours(current_element.board, rows, columns, directions,
                                                            current_element.history)
         for neighbor in neighbors_current_element:
             if neighbor not in visited_elements:
-                if mf.is_goal(neighbor.board, rows):
-                    # adding last element to the history
-                    history.append(neighbor)
+                if mf.is_goal(neighbor.board):
                     return True, neighbor.history, len(neighbor.history.split('-'))
                 # adding next element to the queue
                 queue.append(neighbor)
                 # adding next element to the visited elements
-                visited_elements.add(str(neighbor))
+                visited_elements.add(neighbor)
     return False
 
 

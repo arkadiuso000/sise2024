@@ -7,10 +7,8 @@ MAX_DEPTH = 20
 # iterative DFS algorithm implementation
 def dfs(start_board, directions):
     rows = columns = len(start_board.board)
-    # history tracks the trace of the algorithm
-    history = []
     # check if start_board is our goal
-    if mf.is_goal(start_board.board, rows):
+    if mf.is_goal(start_board.board):
         return True, start_board.history
     # stack and set initialization
     stack = []
@@ -24,8 +22,6 @@ def dfs(start_board, directions):
         if depth > MAX_DEPTH:
             # skip this iteration
             continue
-        # adding next element to the history
-        history.append(current_element)
         # adding next element to the visited elements
         visited_elements.add(current_element)
         # generating neighbours
@@ -34,13 +30,12 @@ def dfs(start_board, directions):
         # neighbors loop
         for neighbor in reversed(neighbors_current_element):
             # check if neighbor is our goal
-            if mf.is_goal(neighbor.board, rows):
-                history.append(neighbor)
+            if mf.is_goal(neighbor.board):
                 return True, neighbor.history, len(neighbor.history.split('-'))
             if (neighbor not in visited_elements) and (neighbor not in stack):
                 # adding next element to the stack
                 stack.append((neighbor, depth + 1))
-    return False, history
+    return False
 
 
 # test

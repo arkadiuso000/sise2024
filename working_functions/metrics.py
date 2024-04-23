@@ -13,7 +13,9 @@ def calculate_distance(point_1, point_2):
     return abs(point_1[0] - point_2[0]) + abs(point_1[1] - point_2[1])
 
 
-def haming_metric(board, goal):
+def haming_metric(board, goal=None):
+    if goal is None:
+        goal = [['1', '2', '3', '4'], ['5', '6', '7', '8'], ['9', '10', '11', '12'], ['13', '14', '15', '0']]
     size = len(board)
     error_counter = 0
     for i in range(size):
@@ -23,7 +25,10 @@ def haming_metric(board, goal):
     return error_counter
 
 
-def manhattan_metric(board, goal):
+def manhattan_metric(board, goal=None):
+    if goal is None:
+        goal = [['1', '2', '3', '4'], ['5', '6', '7', '8'], ['9', '10', '11', '12'], ['13', '14', '15', '0']]
+
     size = len(board)
     goal_positions = find_positions(size, goal)
     error_distance = 0
