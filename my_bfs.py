@@ -1,6 +1,7 @@
 import my_functions as mf
 from collections import deque
 
+
 def bfs(start_board, directions):
     rows = columns = len(start_board.board)
     # history tracks the trace of the algorithm
@@ -34,6 +35,7 @@ def bfs(start_board, directions):
                 # adding next element to the visited elements
                 visited_elements.add(str(neighbor))
     return False
+
 
 # test
 board = mf.import_board("./plansze/4x4G7/4x4_03_00002.txt")
