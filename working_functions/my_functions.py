@@ -1,6 +1,6 @@
 # noinspection PyUnboundLocalVariable,PyShadowingNames
 import copy
-from board import Board
+from working_functions.board import Board
 
 
 def import_board(file_name):
@@ -108,5 +108,5 @@ def is_goal(board, rows):
         raise Exception("Wrong number of rows")
 
 # test
-# board, rows, cols = import_board("./plansze/4x4G7/4x4_01_00002.txt")
+# board, rows, cols = import_board("./boards_files/4x4G7/4x4_01_00002.txt")
 # nei = generate_neighbours(board,rows,cols,"DURL")

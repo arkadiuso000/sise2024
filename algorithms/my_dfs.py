@@ -1,4 +1,4 @@
-import my_functions as mf
+from working_functions import my_functions as mf
 
 # maximum allowed depth
 MAX_DEPTH = 20
@@ -44,7 +44,7 @@ def dfs(start_board, directions):
 
 
 # test
-board = mf.import_board("./plansze/4x4G7/4x4_03_00001.txt")
+board = mf.import_board("../boards_files/4x4G7/4x4_03_00001.txt")
 result, history, ilosc_krokow = dfs(board, "LDUR")
 print("liczba krokow: {}".format(ilosc_krokow))
 print("sciezka:")

@@ -1,4 +1,4 @@
-from board import Board
+from working_functions.board import Board
 
 b1 = Board([[1,2,3]],1,3,"","prawo")
 print(b1.history)
