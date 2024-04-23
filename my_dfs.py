@@ -1,8 +1,5 @@
 import my_functions as mf
 
-# import ast
-
-
 # maximum allowed depth
 MAX_DEPTH = 20
 
@@ -32,7 +29,8 @@ def dfs(start_board, directions):
         # adding next element to the visited elements
         visited_elements.add(current_element)
         # generating neighbours
-        neighbors_current_element = mf.generate_neighbours(current_element.board, rows, columns, directions,current_element.history)
+        neighbors_current_element = mf.generate_neighbours(current_element.board, rows, columns, directions,
+                                                           current_element.history)
         # neighbors loop
         for neighbor in reversed(neighbors_current_element):
             # check if neighbor is our goal
@@ -44,10 +42,10 @@ def dfs(start_board, directions):
                 stack.append((neighbor, depth + 1))
     return False, history
 
+
 # test
 board = mf.import_board("./plansze/4x4G7/4x4_03_00001.txt")
 result, history, ilosc_krokow = dfs(board, "LDUR")
 print("liczba krokow: {}".format(ilosc_krokow))
-print("history:")
-counter = 1
+print("sciezka:")
 print(history)
