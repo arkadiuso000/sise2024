@@ -39,6 +39,7 @@ def bfs(start_board, directions):
 
 # test
 board = mf.import_board("./plansze/4x4G7/4x4_03_00002.txt")
+print(type(board.board[0][0]))
 result, history, ilosc_krokow = bfs(board, "LUDR")
 print("liczba krokow: {}".format(ilosc_krokow))
 print("sciezka:")
