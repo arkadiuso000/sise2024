@@ -36,7 +36,8 @@ def a_star(start_board, metric):
             if len(priority_queue) == 0:
                 end = time.perf_counter()
                 my_time = end - start
-                return False
+                # false, -1, -1, visited elements, processed elements, max depth, time
+                return False, -1, -1, len(visited_elements), len(priority_queue), my_max_depth, my_time
             current_element = heapq.heappop(priority_queue)
         # check if current_element is our goal
         if mf.is_goal(current_element.board):
@@ -72,7 +73,8 @@ def a_star(start_board, metric):
                         heapq.heappush(priority_queue, neighbor)
     end = time.perf_counter()
     my_time = end - start
-    return False
+    # false, -1, -1, visited elements, processed elements, max depth, time
+    return False, -1, -1, len(visited_elements), len(priority_queue), my_max_depth, my_time
 
 # test
 board = mf.import_board("../boards_files/4x4G7/4x4_07_00135.txt")

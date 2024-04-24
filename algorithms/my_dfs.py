@@ -49,7 +49,8 @@ def dfs(start_board, directions):
                 stack.append((neighbor, depth + 1))
     end = time.perf_counter()
     my_time = end - start
-    return False
+    # false, -1, -1, visited elements, processed elements, max depth, time
+    return False, -1, -1, len(visited_elements), len(stack), my_max_depth, my_time
 
 
 # test

@@ -43,7 +43,8 @@ def bfs(start_board, directions):
                 visited_elements.add(neighbor)
     end = time.perf_counter()
     my_time = end - start
-    return False
+    # false, -1, -1, visited elements, processed elements, max depth, time
+    return False, -1, -1, len(visited_elements), len(queue), my_max_depth, my_time
 
 
 # test
