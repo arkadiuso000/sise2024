@@ -100,12 +100,8 @@ def generate_neighbours(board, row, column, directions, history):
 
 
 def is_goal(board):
-    goal4x4 = [['1', '2', '3', '4'], ['5', '6', '7', '8'], ['9', '10', '11', '12'], ['13', '14', '15', '0']]
-    size = len(board)
-    if size == 4:
-        return board == goal4x4
-    else:
-        raise Exception("Wrong number of rows")
+    return board.goal == board.board
+
 
 # test
 # board, rows, cols = import_board("./boards_files/4x4G7/4x4_01_00002.txt")

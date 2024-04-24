@@ -9,7 +9,7 @@ def dfs(start_board, directions):
     start = time.perf_counter()
     rows = columns = len(start_board.board)
     # check if start_board is our goal
-    if mf.is_goal(start_board.board):
+    if mf.is_goal(start_board):
         end = time.perf_counter()
         my_time = end - start
         # true, path, len of path, visited elements, processed elements, max depth, time
@@ -39,7 +39,7 @@ def dfs(start_board, directions):
         # neighbors loop
         for neighbor in reversed(neighbors_current_element):
             # check if neighbor is our goal
-            if mf.is_goal(neighbor.board):
+            if mf.is_goal(neighbor):
                 end = time.perf_counter()
                 my_time = end - start
                 # true, path, len of path, visited elements, processed elements, max depth, time

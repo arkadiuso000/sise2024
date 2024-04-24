@@ -38,7 +38,7 @@ def a_star(start_board, metric):
                 return False, -1, -1, len(visited_elements), len(priority_queue), my_max_depth, my_time
             current_element = heapq.heappop(priority_queue)
         # check if current_element is our goal
-        if mf.is_goal(current_element.board):
+        if mf.is_goal(current_element):
             # true, path, len of path, visited elements, processed elements, max depth, time
             end = time.perf_counter()
             my_time = end - start
