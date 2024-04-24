@@ -75,6 +75,6 @@ def a_star(start_board, metric):
     return False, -1, -1, len(visited_elements), len(priority_queue), my_max_depth, my_time
 
 # test
-board = mf.import_board("../boards_files/4x4G7/4x4_07_00135.txt")
-result = a_star(board, my_metrics.haming_metric)
-print("liczba krokow: {}\nsciezka: {}\nstany odwiedzone: {}\nstany przetworzone: {}\nmaksymalna glebokosc rekursji: {}\nczas: {}".format(result[2],result[1],result[3],result[4],result[5], result[6]))
+# board = mf.import_board("../boards_files/4x4G7/4x4_07_00135.txt")
+# result = a_star(board, my_metrics.haming_metric)
+# print("liczba krokow: {}\nsciezka: {}\nstany odwiedzone: {}\nstany przetworzone: {}\nmaksymalna glebokosc rekursji: {}\nczas: {}".format(result[2],result[1],result[3],result[4],result[5], result[6]))

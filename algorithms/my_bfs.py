@@ -48,8 +48,8 @@ def bfs(start_board, directions):
 
 
 # test
-board = mf.import_board("../boards_files/4x4G7/4x4_03_00001.txt")
-result = bfs(board, "LUDR")
-print("liczba krokow: {}\nsciezka: {}\nstany odwiedzone: {}\nstany przetworzone: {}\nmaksymalna glebokosc rekursji: {}\nczas: {}".format(result[2],result[1],result[3],result[4],result[5],result[6]))
+# board = mf.import_board("../boards_files/4x4G7/4x4_03_00001.txt")
+# result = bfs(board, "LUDR")
+# print("liczba krokow: {}\nsciezka: {}\nstany odwiedzone: {}\nstany przetworzone: {}\nmaksymalna glebokosc rekursji: {}\nczas: {}".format(result[2],result[1],result[3],result[4],result[5],result[6]))
 
 
