@@ -17,6 +17,11 @@ class Board:
         return hash(tuple(tuple(row) for row in self.board))
 
     def __eq__(self, other):
+        # this method is necessary for the set to compare Boards
         if isinstance(other, Board):
             return self.board == other.board
         return False
+
+    def __lt__(self, other):
+        # this method is necessary for the priority queue to compare Boards
+        return self.cost < other.cost
