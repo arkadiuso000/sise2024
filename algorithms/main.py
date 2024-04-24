@@ -21,7 +21,8 @@ def main():
     result = run_algorithm(algorithm_name, metric_or_order, board)
 
     # saving path and len of path
-    with open(output_file, 'w') as f:
+    save_path = "../path_files/{}".format(output_file)
+    with open(save_path, 'w') as f:
         if result[0]:
             # len of path
             f.write(result[2])
@@ -31,7 +32,8 @@ def main():
             f.write(result[2])
 
     # saving stats
-    with open(stats_file, 'w') as f:
+    stats_path = "../stats_files/{}".format(stats_file)
+    with open(stats_path, 'w') as f:
         # len of path
         f.write(result[2])
         # visited elements
