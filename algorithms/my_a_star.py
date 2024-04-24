@@ -3,7 +3,7 @@ sys.path.append('../working_functions')
 import my_functions as mf
 import my_metrics
 import heapq
-
+import time
 
 def find_index_of_element(arr, element):
     for i in range(len(arr)):
@@ -13,6 +13,7 @@ def find_index_of_element(arr, element):
 
 
 def a_star(start_board, metric):
+    start = time.perf_counter()
     rows = columns = len(start_board.board)
     priority_queue = []
     visited_elements = set()
@@ -33,12 +34,16 @@ def a_star(start_board, metric):
         while current_element.heap_activity != True:
             # if priority_queue is empty return False
             if len(priority_queue) == 0:
+                end = time.perf_counter()
+                my_time = end - start
                 return False
             current_element = heapq.heappop(priority_queue)
         # check if current_element is our goal
         if mf.is_goal(current_element.board):
-            # true, path, len of path, visited elements, processed elements, max depth, <soon> time
-            return True, current_element.history, len(current_element.history), len(visited_elements), len(priority_queue), my_max_depth
+            # true, path, len of path, visited elements, processed elements, max depth, time
+            end = time.perf_counter()
+            my_time = end - start
+            return True, current_element.history, len(current_element.history), len(visited_elements), len(priority_queue), my_max_depth, my_time
         # adding next element to the visited elements
         visited_elements.add(current_element)
         # generating neighbours
@@ -65,9 +70,11 @@ def a_star(start_board, metric):
                         neighbor.cost = cost
                         neighbor.heap_activity = True
                         heapq.heappush(priority_queue, neighbor)
+    end = time.perf_counter()
+    my_time = end - start
     return False
 
 # test
-board = mf.import_board("../boards_files/4x4G7/4x4_03_00001.txt")
+board = mf.import_board("../boards_files/4x4G7/4x4_07_00135.txt")
 result = a_star(board, my_metrics.haming_metric)
-print("liczba krokow: {}\nsciezka: {}\nstany odwiedzone: {}\nstany przetworzone: {}\nmaksymalna glebokosc rekursji: {}\nczas: ".format(result[2],result[1],result[3],result[4],result[5]))
+print("liczba krokow: {}\nsciezka: {}\nstany odwiedzone: {}\nstany przetworzone: {}\nmaksymalna glebokosc rekursji: {}\nczas: {}".format(result[2],result[1],result[3],result[4],result[5], result[6]))

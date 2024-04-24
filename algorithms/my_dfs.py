@@ -1,16 +1,19 @@
 from working_functions import my_functions as mf
-
+import time
 # maximum allowed depth
 MAX_DEPTH = 20
 
 
 # iterative DFS algorithm implementation
 def dfs(start_board, directions):
+    start = time.perf_counter()
     rows = columns = len(start_board.board)
     # check if start_board is our goal
     if mf.is_goal(start_board.board):
-        # true, path, len of path, visited elements, processed elements, max depth, <soon> time
-        return True, start_board.history, len(start_board.history), 0, 1, 0
+        end = time.perf_counter()
+        my_time = end - start
+        # true, path, len of path, visited elements, processed elements, max depth, time
+        return True, start_board.history, len(start_board.history), 0, 1, 0, my_time
     # stack and set initialization
     stack = []
     visited_elements = set()
@@ -37,16 +40,21 @@ def dfs(start_board, directions):
         for neighbor in reversed(neighbors_current_element):
             # check if neighbor is our goal
             if mf.is_goal(neighbor.board):
-                # true, path, len of path, visited elements, processed elements, max depth, <soon> time
-                return True, neighbor.history, len(neighbor.history), len(visited_elements), len(stack), my_max_depth
+                end = time.perf_counter()
+                my_time = end - start
+                # true, path, len of path, visited elements, processed elements, max depth, time
+                return True, neighbor.history, len(neighbor.history), len(visited_elements), len(stack), my_max_depth, my_time
             if (neighbor not in visited_elements) and (neighbor not in stack):
                 # adding next element to the stack
                 stack.append((neighbor, depth + 1))
+    end = time.perf_counter()
+    my_time = end - start
     return False
 
 
 # test
-board = mf.import_board("../boards_files/4x4G7/4x4_03_00001.txt")
+
+board = mf.import_board("../boards_files/4x4G7/4x4_07_00135.txt")
 result = dfs(board, "LDUR")
-print("liczba krokow: {}\nsciezka: {}\nstany odwiedzone: {}\nstany przetworzone: {}\nmaksymalna glebokosc rekursji: {}\nczas: ".format(result[2],result[1],result[3],result[4],result[5]))
+print("liczba krokow: {}\nsciezka: {}\nstany odwiedzone: {}\nstany przetworzone: {}\nmaksymalna glebokosc rekursji: {}\nczas: {}".format(result[2],result[1],result[3],result[4],result[5],result[6]))
 
