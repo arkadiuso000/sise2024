@@ -39,8 +39,8 @@ def dfs(start_board, directions):
 
 
 # test
-board = mf.import_board("../boards_files/4x4G7/4x4_03_00001.txt")
-result, history, ilosc_krokow = dfs(board, "LDUR")
-print("liczba krokow: {}".format(ilosc_krokow))
-print("sciezka:")
-print(history)
+# board = mf.import_board("../boards_files/4x4G7/4x4_03_00001.txt")
+# result, history, ilosc_krokow = dfs(board, "LDUR")
+# print("liczba krokow: {}".format(ilosc_krokow))
+# print("sciezka:")
+# print(history)

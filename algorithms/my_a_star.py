@@ -24,7 +24,7 @@ def a_star(start_board, metric):
         # we use lazy remove, so this loop i necessary to check if our current_element is active
         while current_element.heap_activity != True:
             # if priority_queue is empty return False
-            if len(priority_queue) != 0:
+            if len(priority_queue) == 0:
                 return False
             current_element = heapq.heappop(priority_queue)
 
@@ -52,5 +52,7 @@ def a_star(start_board, metric):
                     if priority_queue[index_of_element].cost > cost:
                         # we swap him in 'lazy' way
                         priority_queue[index_of_element].heap_activity = False
+                        neighbor.cost = cost
+                        neighbor.heap_activity = True
                         heapq.heappush(priority_queue, neighbor)
     return False
