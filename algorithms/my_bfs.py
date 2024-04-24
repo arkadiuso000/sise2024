@@ -6,17 +6,23 @@ def bfs(start_board, directions):
     rows = columns = len(start_board.board)
     # check if start_board is our goal
     if mf.is_goal(start_board.board):
-        return True, start_board.history
+        # true, path, len of path, visited elements, processed elements, max depth, <soon> time
+        return True, start_board.history, len(start_board.history), 0, 1, 0
     # deque and set initialization
     queue = deque()
     visited_elements = set()
     # adding first element to the queue
-    queue.append(start_board)
+    queue.append((start_board, 0))
     # adding first element to the visited elements
     visited_elements.add(start_board)
+    # for stats purpose
+    my_max_depth = 0
     # algorithm main loop
     while len(queue) != 0:
-        current_element = queue.popleft()
+        current_element, depth = queue.popleft()
+        # for stats purpose
+        if depth > my_max_depth:
+            my_max_depth = depth
         # generating neighbours
         neighbors_current_element = mf.generate_neighbours(current_element.board, rows, columns, directions,
                                                            current_element.history)
@@ -24,18 +30,18 @@ def bfs(start_board, directions):
             if neighbor not in visited_elements:
                 # check if neighbor is our goal
                 if mf.is_goal(neighbor.board):
-                    return True, neighbor.history, len(neighbor.history.split('-'))
+                    # true, path, len of path, visited elements, processed elements, max depth, <soon> time
+                    return True, neighbor.history, len(neighbor.history), len(visited_elements), len(queue), my_max_depth
                 # adding next element to the queue
-                queue.append(neighbor)
+                queue.append((neighbor, depth + 1))
                 # adding next element to the visited elements
                 visited_elements.add(neighbor)
     return False
 
 
 # test
-# board = mf.import_board("../boards_files/4x4G7/4x4_03_00002.txt")
-# print(type(board.board[0][0]))
-# result, history, ilosc_krokow = bfs(board, "LUDR")
-# print("liczba krokow: {}".format(ilosc_krokow))
-# print("sciezka:")
-# print(history)
+board = mf.import_board("../boards_files/4x4G7/4x4_03_00001.txt")
+result = bfs(board, "LUDR")
+print("liczba krokow: {}\nsciezka: {}\nstany odwiedzone: {}\nstany przetworzone: {}\nmaksymalna glebokosc rekursji: {}\nczas: ".format(result[2],result[1],result[3],result[4],result[5]))
+
+

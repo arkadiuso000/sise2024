@@ -67,7 +67,7 @@ def generate_neighbours(board, row, column, directions, history):
             else:
                 neighbour_l = copy.deepcopy(board)
                 neighbour_l = swap(neighbour_l, zero_row, zero_column, i)
-                new_neighbour_l = Board(neighbour_l, row, column, history, "lewo")
+                new_neighbour_l = Board(neighbour_l, row, column, history, "L")
                 neighbours.append(new_neighbour_l)
 
         elif i == "R":
@@ -76,7 +76,7 @@ def generate_neighbours(board, row, column, directions, history):
             else:
                 neighbour_r = copy.deepcopy(board)
                 neighbour_r = swap(neighbour_r, zero_row, zero_column, i)
-                new_neighbour_r = Board(neighbour_r, row, column, history, "prawo")
+                new_neighbour_r = Board(neighbour_r, row, column, history, "R")
                 neighbours.append(new_neighbour_r)
 
         elif i == "U":
@@ -85,7 +85,7 @@ def generate_neighbours(board, row, column, directions, history):
             else:
                 neighbour_u = copy.deepcopy(board)
                 neighbour_u = swap(neighbour_u, zero_row, zero_column, i)
-                new_neighbour_u = Board(neighbour_u, row, column, history, "góra")
+                new_neighbour_u = Board(neighbour_u, row, column, history, "U")
                 neighbours.append(new_neighbour_u)
 
         elif i == "D":
@@ -94,7 +94,7 @@ def generate_neighbours(board, row, column, directions, history):
             else:
                 neighbour_d = copy.deepcopy(board)
                 neighbour_d = swap(neighbour_d, zero_row, zero_column, i)
-                new_neighbour_d = Board(neighbour_d, row, column, history, "dół")
+                new_neighbour_d = Board(neighbour_d, row, column, history, "D")
                 neighbours.append(new_neighbour_d)
 
     return neighbours

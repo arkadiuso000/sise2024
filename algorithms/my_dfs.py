@@ -9,15 +9,21 @@ def dfs(start_board, directions):
     rows = columns = len(start_board.board)
     # check if start_board is our goal
     if mf.is_goal(start_board.board):
-        return True, start_board.history
+        # true, path, len of path, visited elements, processed elements, max depth, <soon> time
+        return True, start_board.history, len(start_board.history), 0, 1, 0
     # stack and set initialization
     stack = []
     visited_elements = set()
     # adding first element with its depth to the stack
     stack.append((start_board, 0))
+    # for stats purpose
+    my_max_depth = 0
     # algorithm main loop
     while len(stack) != 0:
         current_element, depth = stack.pop()
+        # for stats purpose
+        if depth > my_max_depth:
+            my_max_depth = depth
         # check for maximum depth
         if depth > MAX_DEPTH:
             # skip this iteration
@@ -31,7 +37,8 @@ def dfs(start_board, directions):
         for neighbor in reversed(neighbors_current_element):
             # check if neighbor is our goal
             if mf.is_goal(neighbor.board):
-                return True, neighbor.history, len(neighbor.history.split('-'))
+                # true, path, len of path, visited elements, processed elements, max depth, <soon> time
+                return True, neighbor.history, len(neighbor.history), len(visited_elements), len(stack), my_max_depth
             if (neighbor not in visited_elements) and (neighbor not in stack):
                 # adding next element to the stack
                 stack.append((neighbor, depth + 1))
@@ -39,8 +46,7 @@ def dfs(start_board, directions):
 
 
 # test
-# board = mf.import_board("../boards_files/4x4G7/4x4_03_00001.txt")
-# result, history, ilosc_krokow = dfs(board, "LDUR")
-# print("liczba krokow: {}".format(ilosc_krokow))
-# print("sciezka:")
-# print(history)
+board = mf.import_board("../boards_files/4x4G7/4x4_03_00001.txt")
+result = dfs(board, "LDUR")
+print("liczba krokow: {}\nsciezka: {}\nstany odwiedzone: {}\nstany przetworzone: {}\nmaksymalna glebokosc rekursji: {}\nczas: ".format(result[2],result[1],result[3],result[4],result[5]))
+

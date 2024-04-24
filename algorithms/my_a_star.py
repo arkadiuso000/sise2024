@@ -20,19 +20,25 @@ def a_star(start_board, metric):
     start_board.cost = 0
     # adding first element to the heap
     heapq.heappush(priority_queue, start_board)
+    # for stats purpose
+    my_max_depth = 0
     # algorithm main loop
     while len(priority_queue) != 0:
         current_element = heapq.heappop(priority_queue)
+        depth = current_element.depth
+        # for stats purpose
+        if depth > my_max_depth:
+            my_max_depth = current_element.depth
         # we use lazy remove, so this loop i necessary to check if our current_element is active
         while current_element.heap_activity != True:
             # if priority_queue is empty return False
             if len(priority_queue) == 0:
                 return False
             current_element = heapq.heappop(priority_queue)
-
         # check if current_element is our goal
         if mf.is_goal(current_element.board):
-            return True, current_element.history, len(current_element.history.split('-'))
+            # true, path, len of path, visited elements, processed elements, max depth, <soon> time
+            return True, current_element.history, len(current_element.history), len(visited_elements), len(priority_queue), my_max_depth
         # adding next element to the visited elements
         visited_elements.add(current_element)
         # generating neighbours
@@ -40,6 +46,8 @@ def a_star(start_board, metric):
                                                            current_element.history)
         for neighbor in neighbors_current_element:
             if neighbor not in visited_elements:
+                # for stats purpose
+                neighbor.depth = (depth + 1)
                 # calculating the cost of the neighbor
                 cost = metric(neighbor.board)
                 index_of_element = find_index_of_element(priority_queue, neighbor)
@@ -60,8 +68,6 @@ def a_star(start_board, metric):
     return False
 
 # test
-# board = mf.import_board("../boards_files/4x4G7/4x4_07_00001.txt")
-# result, history, ilosc_krokow = a_star(board, my_metrics.haming_metric)
-# print("liczba krokow: {}".format(ilosc_krokow))
-# print("sciezka:")
-# print(history)
+board = mf.import_board("../boards_files/4x4G7/4x4_03_00001.txt")
+result = a_star(board, my_metrics.haming_metric)
+print("liczba krokow: {}\nsciezka: {}\nstany odwiedzone: {}\nstany przetworzone: {}\nmaksymalna glebokosc rekursji: {}\nczas: ".format(result[2],result[1],result[3],result[4],result[5]))
