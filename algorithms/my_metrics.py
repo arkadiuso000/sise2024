@@ -1,6 +1,3 @@
-import my_functions as mf
-
-
 def find_positions(size, goal):
     goal_positions = {}
     for i in range(size):

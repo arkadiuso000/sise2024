@@ -1,6 +1,5 @@
-# noinspection PyUnboundLocalVariable,PyShadowingNames
 import copy
-from working_functions.board import Board
+from board import Board
 
 
 def import_board(file_name):

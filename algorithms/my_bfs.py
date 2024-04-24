@@ -1,4 +1,4 @@
-from working_functions import my_functions as mf
+import my_functions as mf
 from collections import deque
 import time
 

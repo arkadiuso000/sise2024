@@ -1,4 +1,4 @@
-from working_functions import my_functions as mf
+import my_functions as mf
 import time
 # maximum allowed depth
 MAX_DEPTH = 20

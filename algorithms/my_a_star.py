@@ -1,5 +1,3 @@
-import sys
-sys.path.append('../working_functions')
 import my_functions as mf
 import my_metrics
 import heapq
