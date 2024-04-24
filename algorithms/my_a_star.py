@@ -1,6 +1,8 @@
-from working_functions import my_functions as mf
+import sys
+sys.path.append('../working_functions')
+import my_functions as mf
+import my_metrics
 import heapq
-from working_functions import board
 
 
 def find_index_of_element(arr, element):
@@ -56,3 +58,10 @@ def a_star(start_board, metric):
                         neighbor.heap_activity = True
                         heapq.heappush(priority_queue, neighbor)
     return False
+
+# test
+# board = mf.import_board("../boards_files/4x4G7/4x4_07_00001.txt")
+# result, history, ilosc_krokow = a_star(board, my_metrics.haming_metric)
+# print("liczba krokow: {}".format(ilosc_krokow))
+# print("sciezka:")
+# print(history)
