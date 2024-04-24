@@ -1,5 +1,6 @@
 class Board:
     cost = None
+    heap_activity = True
 
     def __init__(self, plain_board, rows, columns, history, how_created):
         self.board = plain_board
@@ -25,3 +26,6 @@ class Board:
     def __lt__(self, other):
         # this method is necessary for the priority queue to compare Boards
         return self.cost < other.cost
+    def __str__(self):
+        # this method is for debug only
+        return "[Board: {}; cost: {}]".format(self.board,self.cost)
