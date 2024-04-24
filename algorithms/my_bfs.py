@@ -22,6 +22,7 @@ def bfs(start_board, directions):
                                                            current_element.history)
         for neighbor in neighbors_current_element:
             if neighbor not in visited_elements:
+                # check if neighbor is our goal
                 if mf.is_goal(neighbor.board):
                     return True, neighbor.history, len(neighbor.history.split('-'))
                 # adding next element to the queue
