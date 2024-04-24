@@ -26,6 +26,8 @@ class Board:
     def __lt__(self, other):
         # this method is necessary for the priority queue to compare Boards
         return self.cost < other.cost
+    def __gt__(self, other):
+        return self.cost > other.cost
     def __str__(self):
         # this method is for debug only
         return "[Board: {}; cost: {}]".format(self.board,self.cost)
