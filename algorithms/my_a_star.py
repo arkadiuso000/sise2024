@@ -35,14 +35,14 @@ def a_star(start_board, metric):
                 end = time.perf_counter()
                 my_time = end - start
                 # false, -1, -1, visited elements, processed elements, max depth, time
-                return False, -1, -1, len(visited_elements), len(priority_queue), my_max_depth, my_time
+                return False, str(-1), str(-1), str(len(visited_elements)), str(len(priority_queue)), str(my_max_depth), str(my_time)
             current_element = heapq.heappop(priority_queue)
         # check if current_element is our goal
         if mf.is_goal(current_element):
             # true, path, len of path, visited elements, processed elements, max depth, time
             end = time.perf_counter()
             my_time = end - start
-            return True, current_element.history, len(current_element.history), len(visited_elements), len(priority_queue), my_max_depth, my_time
+            return True, current_element.history, str(len(current_element.history)), str(len(visited_elements)), str(len(priority_queue)), str(my_max_depth), str(my_time)
         # adding next element to the visited elements
         visited_elements.add(current_element)
         # generating neighbours
@@ -72,7 +72,7 @@ def a_star(start_board, metric):
     end = time.perf_counter()
     my_time = end - start
     # false, -1, -1, visited elements, processed elements, max depth, time
-    return False, -1, -1, len(visited_elements), len(priority_queue), my_max_depth, my_time
+    return False, str(-1), str(-1), str(len(visited_elements)), str(len(priority_queue)), str(my_max_depth), str(my_time)
 
 # test
 # board = mf.import_board("../boards_files/4x4G7/4x4_07_00135.txt")

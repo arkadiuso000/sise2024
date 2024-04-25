@@ -3,8 +3,9 @@ from board import Board
 
 
 def import_board(file_name):
+    f = "/Users/arek/2.Repos4thSemester/sise2024/boards_files/4x4G7/{}".format(file_name)
     try:
-        file = open(file_name, 'r')
+        file = open(f, 'r')
     except FileNotFoundError:
         print("There is no such file")
 

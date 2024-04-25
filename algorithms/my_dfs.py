@@ -13,7 +13,7 @@ def dfs(start_board, directions):
         end = time.perf_counter()
         my_time = end - start
         # true, path, len of path, visited elements, processed elements, max depth, time
-        return True, start_board.history, len(start_board.history), 0, 1, 0, my_time
+        return True, start_board.history, str(len(start_board.history)), str(0), str(1), str(0), str(my_time)
     # stack and set initialization
     stack = []
     visited_elements = set()
@@ -43,14 +43,14 @@ def dfs(start_board, directions):
                 end = time.perf_counter()
                 my_time = end - start
                 # true, path, len of path, visited elements, processed elements, max depth, time
-                return True, neighbor.history, len(neighbor.history), len(visited_elements), len(stack), my_max_depth, my_time
+                return True, neighbor.history, str(len(neighbor.history)), str(len(visited_elements)), str(len(stack)), str(my_max_depth), str(my_time)
             if (neighbor not in visited_elements) and (neighbor not in stack):
                 # adding next element to the stack
                 stack.append((neighbor, depth + 1))
     end = time.perf_counter()
     my_time = end - start
     # false, -1, -1, visited elements, processed elements, max depth, time
-    return False, -1, -1, len(visited_elements), len(stack), my_max_depth, my_time
+    return False, str(-1), str(-1), str(len(visited_elements)), str(len(stack)), str(my_max_depth), str(my_time)
 
 
 # test
