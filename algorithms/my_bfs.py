@@ -10,7 +10,7 @@ def bfs(start_board, directions):
         end = time.perf_counter()
         my_time = end - start
         # true, path, len of path, visited elements, processed elements, max depth, time
-        return True, start_board.history, str(len(start_board.history)), str(0), str(1), str(0), str(my_time)
+        return True, start_board.history, str(len(start_board.history)), str(1), str(1), str(0), str(my_time)
     # deque and set initialization
     queue = deque()
     visited_elements = set()
@@ -36,7 +36,7 @@ def bfs(start_board, directions):
                     end = time.perf_counter()
                     my_time = end - start
                     # true, path, len of path, visited elements, processed elements, max depth, time
-                    return True, neighbor.history, str(len(neighbor.history)), str(len(visited_elements)), str(len(queue)), str(my_max_depth), str(my_time)
+                    return True, neighbor.history, str(len(neighbor.history)), str(len(visited_elements) + len(queue)), str(len(queue)), str(my_max_depth), str(my_time)
                 # adding next element to the queue
                 queue.append((neighbor, depth + 1))
                 # adding next element to the visited elements
@@ -44,7 +44,7 @@ def bfs(start_board, directions):
     end = time.perf_counter()
     my_time = end - start
     # false, -1, -1, visited elements, processed elements, max depth, time
-    return False, str(-1), str(-1), str(len(visited_elements)), str(len(queue)), str(my_max_depth), str(my_time)
+    return False, str(-1), str(-1), str(len(visited_elements) + len(queue)), str(len(queue)), str(my_max_depth), str(my_time)
 
 
 # test
