@@ -2,7 +2,7 @@
 import matplotlib.pyplot as plt
 import pandas as pan
 
-data = pan.read_csv("all_stats.txt", sep=" ",encoding='utf-16le',
+data = pan.read_csv("new_all_stats.txt", sep=" ",encoding='utf-16le',
                    names=["glebokoscPoczatkowa", "nrPlanszy", "strategia", "parametr", "dlugoscRzowiazania",
                           "odwiedzone", "przetworzone", "maxGlebokosc", "czasProcesu"])
 

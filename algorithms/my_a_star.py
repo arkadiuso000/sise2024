@@ -23,6 +23,7 @@ def a_star(start_board, metric):
     my_max_depth = 0
     # algorithm main loop
     while len(priority_queue) != 0:
+        heapq.heapify(priority_queue)
         current_element = heapq.heappop(priority_queue)
         depth = current_element.depth
         # for stats purpose
