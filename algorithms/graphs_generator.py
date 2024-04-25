@@ -6,7 +6,7 @@ data = pan.read_csv("all_stats.txt", sep=" ",encoding='utf-16le',
                    names=["glebokoscPoczatkowa", "nrPlanszy", "strategia", "parametr", "dlugoscRzowiazania",
                           "odwiedzone", "przetworzone", "maxGlebokosc", "czasProcesu"])
 
-print(data)
+# print(data)
 data_astr = data.loc[data['strategia'] == "astr"]
 astr_hamm = data_astr.loc[data_astr['parametr'] =="hamm"]
 astr_manh = data_astr.loc[data_astr['parametr'] =="manh"]
@@ -42,8 +42,8 @@ def wykres_astr(filename, Xtitle, Ytitle, Mtitle, kryterium, astr_hamm, astr_man
     index_hamm = [i - bar_width / 2 for i in index]
     index_manh = [i + bar_width / 2 for i in index]
 
-    plt.bar(index_hamm, box[0], color='blue', width=bar_width, label='Hamming')
-    plt.bar(index_manh, box[1], color='orange', width=bar_width, label='Manhattan')
+    plt.bar(index_hamm, box[0], color='#1f77b4', width=bar_width, label='Hamming')
+    plt.bar(index_manh, box[1], color='#ff7f0e', width=bar_width, label='Manhattan')
 
     #plt.xlabel(Xtitle)
     #plt.ylabel(Ytitle)
@@ -113,14 +113,14 @@ def wykres_bfs(filename, Xtitle, Ytitle, Mtitle, kryterium, data_bfs):
     index_uldr = [i + bar_width * 5 / 2 for i in index]
     index_ulrd = [i + bar_width * 7 / 2 for i in index]
 
-    plt.bar(index_rdul, box[0], color='pink', width=bar_width, label='RDUL')
-    plt.bar(index_rdlu, box[1], color='green', width=bar_width, label='RDLU')
-    plt.bar(index_drul, box[2], color='orange', width=bar_width, label='DRUL')
-    plt.bar(index_drlu, box[3], color='red', width=bar_width, label='DRLU')
-    plt.bar(index_ludr, box[4], color='purple', width=bar_width, label='LUDR')
-    plt.bar(index_lurd, box[5], color='blue', width=bar_width, label='LURD')
-    plt.bar(index_uldr, box[6], color='brown', width=bar_width, label='ULDR')
-    plt.bar(index_ulrd, box[7], color='black', width=bar_width, label='ULRD')
+    plt.bar(index_rdul, box[0], color='#e377c2', width=bar_width, label='RDUL')
+    plt.bar(index_rdlu, box[1], color='#2ca02c', width=bar_width, label='RDLU')
+    plt.bar(index_drul, box[2], color='#ff7f0e', width=bar_width, label='DRUL')
+    plt.bar(index_drlu, box[3], color='#d62728', width=bar_width, label='DRLU')
+    plt.bar(index_ludr, box[4], color='#9467bd', width=bar_width, label='LUDR')
+    plt.bar(index_lurd, box[5], color='#1f77b4', width=bar_width, label='LURD')
+    plt.bar(index_uldr, box[6], color='#8c564b', width=bar_width, label='ULDR')
+    plt.bar(index_ulrd, box[7], color='#7f7f7f', width=bar_width, label='ULRD')
 
     plt.xlabel(Xtitle)
     plt.ylabel(Ytitle)
@@ -189,14 +189,14 @@ def wykres_dfs(filename, Xtitle, Ytitle, Mtitle, kryterium, data_bfs):
     index_uldr = [i + bar_width * 5 / 2 for i in index]
     index_ulrd = [i + bar_width * 7 / 2 for i in index]
 
-    plt.bar(index_rdul, box[0], color='pink', width=bar_width, label='RDUL')
-    plt.bar(index_rdlu, box[1], color='green', width=bar_width, label='RDLU')
-    plt.bar(index_drul, box[2], color='orange', width=bar_width, label='DRUL')
-    plt.bar(index_drlu, box[3], color='red', width=bar_width, label='DRLU')
-    plt.bar(index_ludr, box[4], color='purple', width=bar_width, label='LUDR')
-    plt.bar(index_lurd, box[5], color='blue', width=bar_width, label='LURD')
-    plt.bar(index_uldr, box[6], color='brown', width=bar_width, label='ULDR')
-    plt.bar(index_ulrd, box[7], color='black', width=bar_width, label='ULRD')
+    plt.bar(index_rdul, box[0], color='#e377c2', width=bar_width, label='RDUL')
+    plt.bar(index_rdlu, box[1], color='#2ca02c', width=bar_width, label='RDLU')
+    plt.bar(index_drul, box[2], color='#ff7f0e', width=bar_width, label='DRUL')
+    plt.bar(index_drlu, box[3], color='#d62728', width=bar_width, label='DRLU')
+    plt.bar(index_ludr, box[4], color='#9467bd', width=bar_width, label='LUDR')
+    plt.bar(index_lurd, box[5], color='#1f77b4', width=bar_width, label='LURD')
+    plt.bar(index_uldr, box[6], color='#8c564b', width=bar_width, label='ULDR')
+    plt.bar(index_ulrd, box[7], color='#7f7f7f', width=bar_width, label='ULRD')
 
     plt.xlabel(Xtitle)
     #plt.ylabel(Ytitle)
@@ -230,9 +230,9 @@ def wykres_razem(filename, Xtitle, Ytitle, Mtitle, kryterium, data_astr, data_bf
     index_dfs = [i for i in index]
     index_astr = [i + bar_width for i in index]
 
-    plt.bar(index_bfs, box[0], color='blue', width=bar_width, label='BFS')
-    plt.bar(index_dfs, box[1], color='orange', width=bar_width, label='DFS')
-    plt.bar(index_astr, box[2], color='green', width=bar_width, label='A*')
+    plt.bar(index_bfs, box[0], color='#1f77b4', width=bar_width, label='BFS')
+    plt.bar(index_dfs, box[1], color='#ff7f0e', width=bar_width, label='DFS')
+    plt.bar(index_astr, box[2], color='#2ca02c', width=bar_width, label='A*')
 
     #plt.xlabel(Xtitle)
     plt.ylabel(Ytitle)
