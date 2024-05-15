@@ -6,6 +6,6 @@ This repository is dedicated to solving a Game of Fifteen various state space se
 
 - **Breadth-First Search (BFS):** A layer-by-layer technique to explore the state space.
 - **Depth-First Search (DFS):** A strategy that dives deep into possible solutions before backtracking.
-- **Best-First Search (BestFS):**
+- **A* Search:**
   - **A* with Hamming Distance Heuristic:** Utilizes Hamming distance to prioritize moves.
   - **A* with Manhattan Distance Heuristic:** Employs Manhattan distance for guiding the search.
